@@ -16,12 +16,19 @@ class NameFrequency:
     # dropping null value columns to avoid errors
     # making data frame
     def preparingData(self, file_name, column_name):
+
         data = pd.read_csv(file_name)
         data.dropna(inplace=True)
         data_frame = dict(data[column_name].str.split(" ", n=1, expand=True))
+        data_frame = pd.DataFrame.from_dict(data_frame)
         self.data_frame = data_frame
+
+        # Test fails right here. self.data_frame is a diction rather than a pd.DataFrame
         if isinstance(self.data_frame, pd.DataFrame):
+
             return True
+
+        print(type(self.data_frame))
         return False
 
     # making separate data set column from specific data frame
@@ -36,7 +43,7 @@ class NameFrequency:
         self.plot_group1 = self.data_set.groupby([column_name1]).size().reset_index(name='counts').sort_values('counts',
                                                                                                                ascending=False).head(
             20)
-        self.plot_group2 = self.data_set.groupby([column_name2]).size().reset_index(name='counts').sort_values('counts',                                                                                                               ascending=False).head(
+        self.plot_group2 = self.data_set.groupby([column_name2]).size().reset_index(name='counts').sort_values('counts', ascending=False).head(
             20)
         return True
 
