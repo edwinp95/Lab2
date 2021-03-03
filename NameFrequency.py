@@ -23,11 +23,12 @@ class NameFrequency:
         data_frame = pd.DataFrame.from_dict(data_frame)
         self.data_frame = data_frame
 
-        # Test fails right here. self.data_frame is a diction rather than a pd.DataFrame
+        # Test fails right here.
         if isinstance(self.data_frame, pd.DataFrame):
 
             return True
 
+        # self.data_frame is a diction rather than a pd.DataFrame
         print(type(self.data_frame))
         return False
 
