@@ -28,6 +28,15 @@ class Invoice:
         total_pure_price = self.totalImpurePrice(products) - self.totalDiscount(products)
         return total_pure_price
 
+    def totalQuantity(self, products):
+        total_quantity = 0
+        for k, v in products.items():
+            total_quantity += int(v['qnt'])
+        return total_quantity
+
+    def totalUniqueProducts(self, products):
+        return len(products)
+
     def inputAnswer(self, input_value):
         while True:
             userInput = input(input_value)

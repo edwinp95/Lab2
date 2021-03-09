@@ -28,3 +28,11 @@ def test_CanCalculateTotalDiscount(invoice, products):
 def test_CanCalculateTotalPurePrice(invoice, products):
     invoice.totalPurePrice(products)
     assert invoice.totalPurePrice(products) == 69.38
+
+def test_CanCalculateTotalQuantity(invoice, products):
+    invoice.totalQuantity(products)
+    assert invoice.totalQuantity(products) == 15
+
+def test_CanCalculateUniqueProducts(invoice, products):
+    invoice.totalUniqueProducts(products)
+    assert invoice.totalUniqueProducts(products) == 2
